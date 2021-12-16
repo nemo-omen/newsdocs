@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return inertia('index');
 });
+
+Route::get('/jaillogs', function () {
+    return inertia('jaillogs');
+});
+
+Route::get('/prompter', function () {
+    return inertia('prompter');
+});

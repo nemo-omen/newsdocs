@@ -5,10 +5,11 @@
 <header>
     <div id="site-brand">
         <h1>
-            <a href="/" class="home"> NewsDocs </a>
+            <a href="/" use:inertia class="home"> NewsDocs </a>
         </h1>
     </div>
     <nav>
+        <a use:inertia href="/">Home</a>
         <a use:inertia href="/jaillogs">Jail Logs</a>
         <a use:inertia href="/prompter">Prompter</a>
     </nav>

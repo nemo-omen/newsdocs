@@ -1,7 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
+        "dev": "concurrently \"npm run dev:lara\" \"npm run dev:vite\"",
+        "dev:lara": "php artisan serve",
+        "dev:vite": "vite",
         "build": "vite build",
         "serve": "vite preview"
     },
@@ -11,6 +13,7 @@
         "@vue/compiler-sfc": "^3.2.6",
         "autoprefixer": "^10.3.0",
         "axios": "^0.21",
+        "concurrently": "^6.4.0",
         "laravel-vite": "^0.0.19",
         "lodash": "^4.17.19",
         "postcss": "^8.3.5",
