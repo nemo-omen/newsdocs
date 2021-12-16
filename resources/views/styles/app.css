@@ -12,23 +12,34 @@
     --step-5: clamp(5.52rem, 5.22rem + 1.54vw, 6.31rem);
 
     /* COLOR */
-    --prussian-very-light: #2b82c0;
-    --prussian-light: #0a4975;
-    --prussian: #003153;
-    --prussian-dark: #001d31;
-    --prussian-rgb: 0, 49, 83;
+    --prussian-00: #8fd0ff;
+    --prussian-01: #67aee0;
+    --prussian-02: #3f96d4;
+    --prussian-03: #2b82c0;
+    --prussian-04: #1c6396;
+    --prussian-05: #115688;
+    --prussian-06: #0a4975;
+    --prussian-07: #073c63;
+    --prussian-08: #003153;
+    --prussian-09: #001d31;
+
+    --tart-orange: #fb4d3d;
+    --yellow-red: #ffba49;
 
     --light: #eefbfb;
-    --light-mid: var(--prussian-very-light);
-    --mid-sub: var(--prussian-light);
-    --mid: var(--prussian);
-    --dark: var(--prussian-dark);
+    --light-mid: var(--prussian-02);
+    --mid-sub: var(--prussian-03);
+    --mid: var(--prussian-08);
+    --dark: var(--prussian-09);
 
     /* DOC */
     --foreground: var(--dark);
     --background: var(--light);
-    --link: var(--light);
-    --hover: var(--prussian-very-light);
+    --background-offset: var(--prussian-01);
+    --link: var(--prussian-08);
+    --hover: var(--prussian-05);
+    --accent: var(--tart-orange);
+    --accent-secondary: var(--yellow-red);
 }
 
 body {
@@ -36,6 +47,12 @@ body {
     font-size: var(--step--1);
     color: var(--foreground);
     background-color: var(--background);
+}
+
+#app {
+    min-width: 100%;
+    height: 100vh;
+    border-top: 5px solid var(--accent);
 }
 
 h1,
@@ -83,5 +100,10 @@ a:not(class):hover {
     :root {
         --foreground: var(--light);
         --background: var(--dark);
+        --background-offset: var(--prussian-07);
+        --link: var(--prussian-00);
+        --hover: var(--prussian-01);
+        --accent: var(--yellow-red);
+        --accent-secondary: var(--tart-orange);
     }
 }

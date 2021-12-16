@@ -26,7 +26,7 @@
         display: flex;
         justify-content: space-between;
         align-items: baseline;
-        background: var(--mid);
+        background: var(--background-offset);
         padding: 1rem;
     }
 
