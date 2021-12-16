@@ -1305,6 +1305,11 @@
     "resolve" "^1.20.0"
     "tmp" "^0.2.1"
 
+"the-new-css-reset@^1.4.2":
+  "integrity" "sha512-0dZurHoi1NrhOvIiozio5AZfCa6XRYJQU8drmfVsFFzFSwkcGuit2qtrP08c2bQT5bzNIgCJ3j5Rvz6xIRC1xg=="
+  "resolved" "https://registry.npmjs.org/the-new-css-reset/-/the-new-css-reset-1.4.2.tgz"
+  "version" "1.4.2"
+
 "tmp@^0.2.1":
   "integrity" "sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ=="
   "resolved" "https://registry.npmjs.org/tmp/-/tmp-0.2.1.tgz"

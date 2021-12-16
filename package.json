@@ -20,10 +20,11 @@
     },
     "dependencies": {
         "@inertiajs/inertia": "^0.9.0",
-        "@inertiajs/inertia-vue3": "^0.5.2",
         "@inertiajs/inertia-svelte": "^0.7.4",
+        "@inertiajs/inertia-vue3": "^0.5.2",
         "@inertiajs/progress": "^0.2.6",
         "dotenv": "^10.0.0",
+        "the-new-css-reset": "^1.4.2",
         "vite-plugin-live-reload": "^2.1.0",
         "vue": "^3.2.6"
     }
