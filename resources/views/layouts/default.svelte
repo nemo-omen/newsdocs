@@ -1,17 +1,35 @@
 <script>
-    import { inertia, page } from "@inertiajs/inertia-svelte";
+    import { inertia, page, Link } from "@inertiajs/inertia-svelte";
+    import { Inertia } from "@inertiajs/inertia";
+
+    $: current = "/";
+
+    Inertia.on("navigate", (event) => {
+        const pg = event.detail?.page;
+        // console.log(pg);
+        if (pg.url) {
+            current = pg.url;
+        } else {
+            current = "/";
+        }
+        console.log("current page: ", current);
+    });
 </script>
 
 <header>
     <div id="site-brand">
         <h1>
-            <a href="/" use:inertia class="home"> NewsDocs </a>
+            <Link href="/" class="home">NewsDocs</Link>
         </h1>
     </div>
     <nav>
-        <a use:inertia href="/">Home</a>
-        <a use:inertia href="/jaillogs">Jail Logs</a>
-        <a use:inertia href="/prompter">Prompter</a>
+        <Link href="/" class={current === "/" ? "active" : ""}>Home</Link>
+        <Link href="/jaillogs" class={current === "/jaillogs" ? "active" : ""}
+            >Jail Logs</Link
+        >
+        <Link href="/prompter" class={current === "/prompter" ? "active" : ""}
+            >Prompter</Link
+        >
     </nav>
 </header>
 <main>
@@ -37,7 +55,7 @@
         gap: 2rem;
     }
 
-    nav a {
+    :global(nav a) {
         letter-spacing: 0.125em;
     }
 
@@ -54,7 +72,10 @@
         background: var(--background-offset);
         box-shadow: 5px 5px 10px 10px rgba(var(--shadow), 0.5);
     }
-    .active {
+    :global(.active) {
         color: var(--accent);
+    }
+    :global(.active):hover {
+        color: var(--accent-secondary);
     }
 </style>
