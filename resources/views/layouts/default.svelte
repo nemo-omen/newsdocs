@@ -41,6 +41,11 @@
         letter-spacing: 0.125em;
     }
 
+    main {
+        position: relative;
+        height: 100%;
+    }
+
     footer {
         display: flex;
         justify-content: center;

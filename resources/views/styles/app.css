@@ -107,6 +107,14 @@ a:not(class):hover {
     letter-spacing: 0.075em;
 }
 
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground: var(--light);

@@ -28,6 +28,7 @@
         "@inertiajs/progress": "^0.2.6",
         "dotenv": "^10.0.0",
         "the-new-css-reset": "^1.4.2",
+        "title-case": "^3.0.3",
         "vite-plugin-live-reload": "^2.1.0",
         "vue": "^3.2.6"
     }

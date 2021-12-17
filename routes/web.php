@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/jaillogs', function () {
-    return inertia('jaillogs');
+    return inertia('jaillogs/index');
 });
 
 Route::get('/prompter', function () {
-    return inertia('prompter');
+    return inertia('prompter/index');
 });

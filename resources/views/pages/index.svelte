@@ -12,7 +12,7 @@
 
 <div
     class="content"
-    in:fade={{ duration: 200, delay: 200, easing: quintIn }}
+    in:fade={{ duration: 200, delay: 250, easing: quintIn }}
     out:fade={{ duration: 200, easing: quintOut }}
 >
     <div class="two-up">
@@ -55,10 +55,10 @@
     .two-up {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        width: 50%;
+        width: 60%;
         margin: 0 auto;
         justify-content: center;
-        gap: var(--step-4);
+        gap: var(--step-6);
     }
 
     .card {
