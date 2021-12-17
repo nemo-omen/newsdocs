@@ -4,6 +4,14 @@
 </script>
 
 <script>
+    import { fade } from "svelte/transition";
+    import { quintIn, quintOut } from "svelte/easing";
 </script>
 
-<h2>Prompter</h2>
+<div
+    class="content"
+    in:fade={{ duration: 200, delay: 200, easing: quintIn }}
+    out:fade={{ duration: 200, easing: quintOut }}
+>
+    <h2>Prompter</h2>
+</div>
