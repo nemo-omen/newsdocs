@@ -6,13 +6,14 @@
 <script>
     import { fade } from "svelte/transition";
     import { quintIn, quintOut } from "svelte/easing";
-
+    import Icon from "../../lib/components/Icon.svelte";
     import { parseHtml } from "./lib/parseHtml.js";
 
     let htmlInput = "";
     $: errorMessage = false;
     $: message = "";
     $: templateOutput = "";
+    $: clipboardIsSet = false;
 
     async function parseInput() {
         try {
@@ -23,6 +24,14 @@
             message = "Something went wrong!";
         }
     }
+
+    function copyToClipboard() {
+        const clipboard = navigator.clipboard;
+        clipboard
+            .writeText(templateOutput)
+            .then(() => (clipboardIsSet = true))
+            .catch((error) => console.error(error));
+    }
 </script>
 
 <div
@@ -32,7 +41,9 @@
 >
     <div class="control">
         <div class="input">
-            <label for="doc-input">HTML Input</label>
+            <div class="textarea-head">
+                <label for="doc-input">HTML Input</label>
+            </div>
             <textarea
                 name="doc-input"
                 id="doc-input"
@@ -42,10 +53,26 @@
             />
         </div>
         <div class="input-control">
-            <button on:click={parseInput}>Make Template!</button>
+            <button on:click={parseInput} class="control-button">
+                <Icon name="arrow" />
+            </button>
         </div>
         <div class="output">
-            <label for="doc-input">WordPress Template</label>
+            <div class="textarea-head">
+                <label for="doc-input">WordPress Template</label>
+                {#if templateOutput.length > 0}
+                    <button
+                        transition:fade={{ duration: 200, easing: quintIn }}
+                        class="icon-button {clipboardIsSet
+                            ? 'clipboard-set'
+                            : ''}"
+                        on:click={copyToClipboard}
+                    >
+                        <span class="button-label">copy template</span>
+                        <Icon name="clipboard" />
+                    </button>
+                {/if}
+            </div>
             <textarea
                 name="doc-output"
                 id="doc-output"
@@ -78,6 +105,27 @@
         flex-direction: column;
         gap: var(--step-4);
     }
+    .preview-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--step-4);
+    }
+
+    :global(.preview *) {
+        font-size: var(--step-0);
+    }
+
+    :global(.preview * + *) {
+        margin-top: var(--step-2);
+    }
+
+    :global(.preview p) {
+        line-height: 1.5;
+    }
+    :global(.preview hr) {
+        border-top: 1px solid var(--foreground);
+    }
     textarea {
         background-color: var(--background-offset);
         width: 100%;
@@ -100,10 +148,34 @@
         gap: var(--step-0);
     }
 
+    .textarea-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-inline: var(--step-0);
+    }
+
+    .icon-button {
+        display: flex;
+        align-items: center;
+        gap: var(--step--2);
+        background-color: transparent;
+        box-shadow: none;
+        font-size: var(--step--1);
+    }
+
+    .button-label {
+        font-size: var(--step--2);
+    }
+
+    .clipboard-set {
+        color: darkcyan;
+    }
+
     .input label,
     .output label,
     h2 {
-        padding-inline: var(--step-0);
+        /* padding-inline: var(--step-0); */
         font-size: var(--step-1);
         font-weight: 600;
     }
@@ -119,7 +191,7 @@
     }
 
     button {
-        font-size: var(--step-0);
+        font-size: var(--step-1);
         background-color: var(--prussian-05);
         color: var(--light);
         border: none;
@@ -129,6 +201,9 @@
         letter-spacing: 0.125em;
         cursor: pointer;
         box-shadow: 5px 5px 15px rgba(var(--shadow), 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     button:active {
@@ -138,10 +213,9 @@
     @media (min-width: 1024px) {
         .control {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-areas:
-                "input output"
-                "control control";
+            grid-template-columns: 1fr auto 1fr;
+            grid-template-areas: "input control output";
+            align-items: center;
         }
         .input {
             grid-area: input;
@@ -151,6 +225,11 @@
         }
         .input-control {
             grid-area: control;
+        }
+
+        .preview {
+            /* margin: 0 auto; */
+            max-width: 70ch;
         }
     }
 </style>

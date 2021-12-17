@@ -46,7 +46,7 @@
         justify-content: space-between;
         align-items: baseline;
         background: var(--background-offset);
-        padding: 1rem;
+        padding: var(--step--1) var(--step-1);
         box-shadow: 5px 5px 10px 10px rgba(var(--shadow), 0.5);
     }
 
@@ -62,6 +62,7 @@
     main {
         position: relative;
         height: 100%;
+        overflow-y: scroll;
     }
 
     footer {
